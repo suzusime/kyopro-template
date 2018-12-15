@@ -1,3 +1,4 @@
+#pragma region Macros
 #include <bits/stdc++.h>
 using namespace std;
 // iteration helper
@@ -75,7 +76,7 @@ int powint(int a, int x){
 	}
 	return res;
 }
-
+#pragma endregion
 
 signed main(){
 #ifdef _DEBUG
