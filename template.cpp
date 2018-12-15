@@ -10,6 +10,28 @@ using namespace std;
 #define RALL(a) (a).rbegin(), (a).rend()
 #define EXIST(s,e) ((s).find(e)!=(s).end())
 #define PB push_back
+// MyVector
+template <typename T>
+class MyVector : private std::vector<T, std::allocator<T>> {
+public:
+    using basetype = std::vector<T, std::allocator<T>>;
+	using basetype::vector; // constractor
+	using basetype::operator=;
+	using basetype::begin; using basetype::end; using basetype::cbegin; using basetype::cend; using basetype::rbegin;	using basetype::rend; using basetype::crbegin; using basetype::crend;
+	using basetype::size; using basetype::max_size; using basetype::resize; using basetype::capacity; using basetype::empty; using basetype::reserve; using basetype::shrink_to_fit;
+
+	// []のかわりに at をつかう
+	typename MyVector<T>::reference operator[](typename basetype::size_type n){ basetype::at(n); }
+	typename MyVector<T>::const_reference operator[](typename basetype::size_type n) const { basetype::at(n); };
+
+	using basetype::at; using basetype::data; using basetype::front; using basetype::back;
+	using basetype::assign; using basetype::push_back; using basetype::emplace_back; using basetype::pop_back; using basetype::insert; using basetype::emplace; using basetype::erase; using basetype::swap; using basetype::clear;
+};
+#ifdef _DEBUG
+#define vector MyVector
+#else
+#define vector std::vector
+#endif
 // typedefs
 #define ll long long
 #define vi vector<int>
@@ -52,8 +74,17 @@ int powint(int a, int x){
 }
 
 
-int main(){
-	cci(N); ccs(s);
+signed main(){
+#ifdef _DEBUG
+try{
+#endif
+// main program ---------------------------------------------
+	cci(N);
 	pr(N);
+	cvi(A,N); pr(A[3]);
+// end main program -----------------------------------------
+#ifdef _DEBUG
+} catch (std::out_of_range& ex){ pr("out of range"); }
+#endif
 	return 0;
 }

@@ -1,2 +1,2 @@
 #! /bin/sh
-g++ $1.cpp -o $1 -std=c++14
+g++ -o $1 -std=c++14 -D_DEBUG $1.cpp
