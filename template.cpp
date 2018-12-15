@@ -59,8 +59,11 @@ public:
 #define debug_3(x1,x2,x3) cout<<#x1<<": "<<x1<<", "#x2<<": "<<x2<<", "#x3<<": "<<x3<<endl
 #define debug_4(x1,x2,x3,x4) cout<<#x1<<": "<<x1<<", "#x2<<": "<<x2<<", "#x3<<": "<<x3<<", "#x4<<": "<<x4<<endl
 #define debug_5(x1,x2,x3,x4,x5) cout<<#x1<<": "<<x1<<", "#x2<<": "<<x2<<", "#x3<<": "<<x3<<", "#x4<<": "<<x4<<", "#x5<<": "<<x5<<endl
+#ifdef _DEBUG
 #define debug(...) CHOOSE((__VA_ARGS__,debug_5,debug_4,debug_3,debug_2,debug_1,~))(__VA_ARGS__)
-
+#else
+#define debug(...)
+#endif
 // const number
 const double PI  = acos(-1.0);
 const double EPS = 1e-10;
@@ -81,7 +84,6 @@ try{
 // main program ---------------------------------------------
 	cci(N);
 	pr(N);
-	cvi(A,N); pr(A[3]);
 // end main program -----------------------------------------
 #ifdef _DEBUG
 } catch (std::out_of_range& ex){ pr("out of range"); }
